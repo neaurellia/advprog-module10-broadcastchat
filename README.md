@@ -20,3 +20,9 @@ When the server starts, it listens on `127.0.0.1:2000`.
 - In the server, the listening port is defined using `TcpListener::bind("127.0.0.1:8080").await?;`
 - The WebSocket handshake on the server side is handled by `ServerBuilder::new().accept(socket)`
 - Both sides use the same `tokio_websockets` crate, ensuring consistency in the protocol and implementation.
+
+### Tutorial 2.3
+![alt text](<Screenshot (318).png>)
+Originally, the chat server only sent the raw message to all clients, without identifying who sent it. That worked fine functionally, but for any real chat application, it's important to know who said what.
+
+By including the sender's address (IP and port), each client can now identify which user sent each message. This adds clarity, makes debugging easier, and is an essential step if we later want to support usernames or IDs.
